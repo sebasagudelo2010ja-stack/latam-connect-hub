@@ -67,24 +67,23 @@ const TutorRegister = () => {
   };
 
   const onSubmit = async (data: TutorFormData) => {
-    const payload = {
-      email: data.email,
-      full_name: data.full_name,
-      password: data.password,
-      subjects: data.subjects,
-      hourly_rate: parseFloat(data.hourly_rate),
-      role: "tutor",
-    };
-    console.log("Tutor registration payload:", payload);
-    login("mock-token-tutor", {
+    const profile = {
       id: crypto.randomUUID(),
       email: data.email,
       full_name: data.full_name,
-      user_type: "tutor",
+      user_type: "tutor" as const,
       subjects: data.subjects,
       hourly_rate: parseFloat(data.hourly_rate),
-    });
-    toast.success("¡Registro exitoso! Verifica tu email para activar tu cuenta.");
+    };
+
+    const result = registerUser(data.email, data.password, profile);
+    if (!result.success) {
+      toast.error(result.error ?? "Error al registrar.");
+      return;
+    }
+
+    login("mock-token-tutor", profile);
+    toast.success("¡Registro exitoso! Ya puedes usar tu cuenta.");
     navigate("/accounts/dashboard/tutor");
   };
 
