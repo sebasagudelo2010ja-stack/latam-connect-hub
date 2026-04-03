@@ -58,7 +58,6 @@ const StudentRegister = () => {
   const isMinor = watch("is_minor");
 
   const onSubmit = async (data: StudentFormData) => {
-    // snake_case payload ready for Django
     const payload = {
       email: data.email,
       full_name: data.full_name,
@@ -70,7 +69,18 @@ const StudentRegister = () => {
       role: "student",
     };
     console.log("Student registration payload:", payload);
+    // Mock login
+    login("mock-token-student", {
+      id: crypto.randomUUID(),
+      email: data.email,
+      full_name: data.full_name,
+      country: data.country,
+      user_type: "client",
+      is_minor: data.is_minor,
+    });
     toast.success("¡Registro exitoso! Verifica tu email para activar tu cuenta.");
+    navigate("/accounts/dashboard/client");
+  };
   };
 
   return (
