@@ -97,6 +97,8 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "retro-grid": "retro-grid 20s linear infinite",
+        "border-beam": "border-beam 4s linear infinite",
+        shimmer: "shimmer 2s linear infinite",
       },
     },
   },
