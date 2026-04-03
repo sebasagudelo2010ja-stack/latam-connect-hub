@@ -20,7 +20,7 @@ const HeroSection = () => {
       className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16"
       aria-labelledby="hero-heading"
     >
-      <RetroGrid />
+      <TubesHero />
 
       <motion.div
         variants={container}
