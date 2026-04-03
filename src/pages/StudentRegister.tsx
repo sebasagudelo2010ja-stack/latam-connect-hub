@@ -3,7 +3,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { GraduationCap, ArrowLeft, BookOpen } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { studentSchema, type StudentFormData } from "@/lib/schemas";
 import { LATAM_COUNTRIES, COUNTRY_NAME_TO_CODE } from "@/lib/constants";
