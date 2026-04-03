@@ -375,11 +375,18 @@ const SessionConfirm = () => {
               </div>
 
               {session.meeting_link && session.status === "confirmed" && (
-                <div className="rounded-lg border border-primary/30 bg-primary/10 p-3">
-                  <p className="text-xs uppercase tracking-wider text-primary">Link de reunión</p>
-                  <a href={session.meeting_link} target="_blank" rel="noopener noreferrer" className="mt-1 flex items-center gap-1 text-sm text-primary hover:underline">
-                    <LinkIcon className="h-3.5 w-3.5" />{session.meeting_link}
-                  </a>
+                <div className="space-y-3">
+                  <div className="rounded-lg border border-primary/30 bg-primary/10 p-3">
+                    <p className="text-xs uppercase tracking-wider text-primary">Link de reunión</p>
+                    <a href={session.meeting_link} target="_blank" rel="noopener noreferrer" className="mt-1 flex items-center gap-1 text-sm text-primary hover:underline">
+                      <LinkIcon className="h-3.5 w-3.5" />{session.meeting_link}
+                    </a>
+                  </div>
+                  <Button asChild className="w-full bg-primary text-primary-foreground shadow-lg hover:bg-primary/90">
+                    <Link to={`/sessions/meeting/${session.id}`}>
+                      <Video className="mr-2 h-4 w-4" /> Ir a la Sala de Reunión
+                    </Link>
+                  </Button>
                 </div>
               )}
             </CardContent>

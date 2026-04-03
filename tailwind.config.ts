@@ -84,11 +84,21 @@ export default {
           "0%": { transform: "translateY(0)" },
           "100%": { transform: "translateY(calc(var(--grid-size)))" },
         },
+        "border-beam": {
+          "0%": { transform: "rotate(0deg)" },
+          "100%": { transform: "rotate(360deg)" },
+        },
+        shimmer: {
+          "0%": { transform: "translateX(-100%)" },
+          "100%": { transform: "translateX(100%)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         "retro-grid": "retro-grid 20s linear infinite",
+        "border-beam": "border-beam 4s linear infinite",
+        shimmer: "shimmer 2s linear infinite",
       },
     },
   },

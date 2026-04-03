@@ -12,6 +12,7 @@ import TutorsSearch from "./pages/TutorsSearch.tsx";
 import SessionRequest from "./pages/SessionRequest.tsx";
 import SessionConfirm from "./pages/SessionConfirm.tsx";
 import SessionNegotiate from "./pages/SessionNegotiate.tsx";
+import SessionMeeting from "./pages/SessionMeeting.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -47,6 +48,7 @@ const App = () => (
           <Route path="/sessions/request/:tutor_id" element={<SessionRequest />} />
           <Route path="/sessions/confirm/:id" element={<SessionConfirm />} />
           <Route path="/sessions/negotiate/:id" element={<SessionNegotiate />} />
+          <Route path="/sessions/meeting/:id" element={<SessionMeeting />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
