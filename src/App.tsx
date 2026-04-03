@@ -6,6 +6,8 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import StudentRegister from "./pages/StudentRegister.tsx";
 import TutorRegister from "./pages/TutorRegister.tsx";
+import StudentLogin from "./pages/StudentLogin.tsx";
+import TutorLogin from "./pages/TutorLogin.tsx";
 import StudentDashboard from "./pages/StudentDashboard.tsx";
 import TutorDashboard from "./pages/TutorDashboard.tsx";
 import TutorsSearch from "./pages/TutorsSearch.tsx";
@@ -27,7 +29,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/accounts/register/client" element={<StudentRegister />} />
+          <Route path="/accounts/login/client" element={<StudentLogin />} />
           <Route path="/tutores/registro" element={<TutorRegister />} />
+          <Route path="/accounts/login/tutor" element={<TutorLogin />} />
           <Route path="/tutors" element={<TutorsSearch />} />
           <Route
             path="/accounts/dashboard/client"

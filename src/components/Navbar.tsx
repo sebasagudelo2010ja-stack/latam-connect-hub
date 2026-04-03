@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Menu, X, GraduationCap, BookOpen } from "lucide-react";
+import { Menu, X, GraduationCap, BookOpen, LogIn, UserPlus } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
+  DropdownMenuSeparator,
+  DropdownMenuLabel,
 } from "@/components/ui/dropdown-menu";
 import { useAuthStore } from "@/stores/authStore";
 
@@ -41,9 +43,7 @@ const Navbar = () => {
           {is_authenticated ? (
             <>
               <Button asChild variant="outline" className="border-primary/30 hover:border-primary hover:bg-primary/10">
-                <Link to={dashboardPath}>
-                  Mi Dashboard
-                </Link>
+                <Link to={dashboardPath}>Mi Dashboard</Link>
               </Button>
               <Button
                 variant="ghost"
@@ -56,23 +56,51 @@ const Navbar = () => {
             </>
           ) : (
             <>
+              {/* Login dropdown */}
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <Button variant="outline" className="border-primary/30 hover:border-primary hover:bg-primary/10">
+                  <Button variant="ghost" className="gap-2 text-muted-foreground hover:text-foreground">
+                    <LogIn className="h-4 w-4" />
                     Iniciar sesión
                   </Button>
                 </DropdownMenuTrigger>
-                <DropdownMenuContent align="end" className="w-48">
+                <DropdownMenuContent align="end" className="w-52">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">Iniciar sesión como</DropdownMenuLabel>
+                  <DropdownMenuItem asChild className="cursor-pointer gap-2">
+                    <Link to="/accounts/login/client">
+                      <BookOpen className="h-4 w-4 text-primary" />
+                      Estudiante
+                    </Link>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild className="cursor-pointer gap-2">
+                    <Link to="/accounts/login/tutor">
+                      <GraduationCap className="h-4 w-4 text-secondary" />
+                      Tutor
+                    </Link>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
+
+              {/* Register dropdown */}
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <Button className="gap-2 bg-primary text-primary-foreground hover:bg-primary/90">
+                    <UserPlus className="h-4 w-4" />
+                    Registrarse
+                  </Button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="end" className="w-52">
+                  <DropdownMenuLabel className="text-xs text-muted-foreground">Registrarse como</DropdownMenuLabel>
                   <DropdownMenuItem asChild className="cursor-pointer gap-2">
                     <Link to="/accounts/register/client">
                       <BookOpen className="h-4 w-4 text-primary" />
-                      Login Estudiante
+                      Estudiante
                     </Link>
                   </DropdownMenuItem>
                   <DropdownMenuItem asChild className="cursor-pointer gap-2">
                     <Link to="/tutores/registro">
                       <GraduationCap className="h-4 w-4 text-secondary" />
-                      Login Tutor
+                      Tutor
                     </Link>
                   </DropdownMenuItem>
                 </DropdownMenuContent>
@@ -118,16 +146,31 @@ const Navbar = () => {
               </>
             ) : (
               <>
+                <p className="text-xs font-medium text-muted-foreground px-1 pt-1">Iniciar sesión</p>
                 <Button asChild variant="outline" className="w-full justify-start gap-2 border-primary/30">
-                  <Link to="/accounts/register/client" onClick={() => setMobileOpen(false)}>
+                  <Link to="/accounts/login/client" onClick={() => setMobileOpen(false)}>
                     <BookOpen className="h-4 w-4 text-primary" />
                     Login Estudiante
                   </Link>
                 </Button>
                 <Button asChild variant="outline" className="w-full justify-start gap-2 border-secondary/30">
-                  <Link to="/tutores/registro" onClick={() => setMobileOpen(false)}>
+                  <Link to="/accounts/login/tutor" onClick={() => setMobileOpen(false)}>
                     <GraduationCap className="h-4 w-4 text-secondary" />
                     Login Tutor
+                  </Link>
+                </Button>
+
+                <p className="text-xs font-medium text-muted-foreground px-1 pt-3">Registrarse</p>
+                <Button asChild className="w-full justify-start gap-2 bg-azure text-azure-foreground hover:bg-azure/90">
+                  <Link to="/accounts/register/client" onClick={() => setMobileOpen(false)}>
+                    <BookOpen className="h-4 w-4" />
+                    Registro Estudiante
+                  </Link>
+                </Button>
+                <Button asChild className="w-full justify-start gap-2 bg-gold text-gold-foreground hover:bg-gold/90">
+                  <Link to="/tutores/registro" onClick={() => setMobileOpen(false)}>
+                    <GraduationCap className="h-4 w-4" />
+                    Registro Tutor
                   </Link>
                 </Button>
               </>

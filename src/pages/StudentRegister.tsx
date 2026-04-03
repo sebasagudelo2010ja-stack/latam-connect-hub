@@ -7,6 +7,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { studentSchema, type StudentFormData } from "@/lib/schemas";
 import { useAuthStore } from "@/stores/authStore";
+import { registerUser } from "@/lib/mockUserDb";
 import { LATAM_COUNTRIES, COUNTRY_NAME_TO_CODE } from "@/lib/constants";
 import { useGeoLocation } from "@/hooks/useGeoLocation";
 
@@ -58,27 +59,25 @@ const StudentRegister = () => {
   const isMinor = watch("is_minor");
 
   const onSubmit = async (data: StudentFormData) => {
-    const payload = {
-      email: data.email,
-      full_name: data.full_name,
-      password: data.password,
-      is_minor: data.is_minor,
-      guardian_name: data.is_minor ? data.guardian_name : null,
-      guardian_email: data.is_minor ? data.guardian_email : null,
-      country: data.country,
-      role: "student",
-    };
-    console.log("Student registration payload:", payload);
-    // Mock login
-    login("mock-token-student", {
+    const profile = {
       id: crypto.randomUUID(),
       email: data.email,
       full_name: data.full_name,
       country: data.country,
-      user_type: "client",
+      user_type: "client" as const,
       is_minor: data.is_minor,
-    });
-    toast.success("¡Registro exitoso! Verifica tu email para activar tu cuenta.");
+      guardian_name: data.is_minor ? data.guardian_name : undefined,
+      guardian_email: data.is_minor ? data.guardian_email : undefined,
+    };
+
+    const result = registerUser(data.email, data.password, profile);
+    if (!result.success) {
+      toast.error(result.error ?? "Error al registrar.");
+      return;
+    }
+
+    login("mock-token-student", profile);
+    toast.success("¡Registro exitoso! Ya puedes usar tu cuenta.");
     navigate("/accounts/dashboard/client");
   };
 
@@ -242,7 +241,7 @@ const StudentRegister = () => {
 
               <p className="text-center text-sm text-muted-foreground">
                 ¿Ya tienes cuenta?{" "}
-                <Link to="/" className="text-primary hover:underline">
+                <Link to="/accounts/login/client" className="text-primary hover:underline">
                   Inicia sesión
                 </Link>
               </p>

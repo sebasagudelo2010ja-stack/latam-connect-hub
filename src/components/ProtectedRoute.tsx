@@ -11,11 +11,16 @@ const ROLE_DASHBOARD: Record<string, string> = {
   tutor: "/accounts/dashboard/tutor",
 };
 
+const ROLE_LOGIN: Record<string, string> = {
+  client: "/accounts/login/client",
+  tutor: "/accounts/login/tutor",
+};
+
 const ProtectedRoute = ({ children, allowedRole }: ProtectedRouteProps) => {
   const { is_authenticated, user_type } = useAuthStore();
 
   if (!is_authenticated) {
-    return <Navigate to="/" replace />;
+    return <Navigate to={ROLE_LOGIN[allowedRole ?? "client"] ?? "/accounts/login/client"} replace />;
   }
 
   if (user_type !== allowedRole && user_type) {
