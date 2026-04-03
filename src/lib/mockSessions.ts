@@ -175,6 +175,44 @@ export async function confirmSession(id: string, meeting_link: string | null): P
   return sessions[idx];
 }
 
+export interface SessionFeedback {
+  session_id: string;
+  rating: number;
+  comment: string;
+  submitted_at: string;
+}
+
+const feedbacks: SessionFeedback[] = [];
+
+export async function completeSession(
+  id: string,
+  rating: number,
+  comment: string
+): Promise<{ session: Session; feedback: SessionFeedback }> {
+  await delay(600);
+  const idx = sessions.findIndex((s) => s.id === id);
+  if (idx === -1) throw new Error("Session not found");
+  sessions[idx] = { ...sessions[idx], status: "completed" };
+
+  const feedback: SessionFeedback = {
+    session_id: id,
+    rating,
+    comment,
+    submitted_at: new Date().toISOString(),
+  };
+  feedbacks.push(feedback);
+  return { session: sessions[idx], feedback };
+}
+
+export async function reportSessionIssue(
+  session_id: string,
+  issue: string
+): Promise<{ success: boolean }> {
+  await delay(400);
+  console.log("[Mock API] Issue reported for session", session_id, ":", issue);
+  return { success: true };
+}
+
 export async function cancelSession(id: string, cancel_reason: string): Promise<Session> {
   await delay(600);
   const idx = sessions.findIndex((s) => s.id === id);
