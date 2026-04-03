@@ -11,6 +11,7 @@ import TutorDashboard from "./pages/TutorDashboard.tsx";
 import TutorsSearch from "./pages/TutorsSearch.tsx";
 import SessionRequest from "./pages/SessionRequest.tsx";
 import SessionConfirm from "./pages/SessionConfirm.tsx";
+import SessionNegotiate from "./pages/SessionNegotiate.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
