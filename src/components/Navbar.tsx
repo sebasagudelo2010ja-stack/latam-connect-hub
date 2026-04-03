@@ -33,7 +33,7 @@ const Navbar = () => {
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Logo */}
-        <Link to="/" className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground" aria-label="SubjectSupport LATAM — Inicio">
+        <Link to={is_authenticated ? dashboardPath : "/"} className="flex items-center gap-2 text-lg font-bold tracking-tight text-foreground" aria-label="SubjectSupport LATAM — Inicio">
           <GraduationCap className="h-6 w-6 text-primary" />
           <span>SubjectSupport <span className="text-primary">LATAM</span></span>
         </Link>
