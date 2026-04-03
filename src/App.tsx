@@ -43,6 +43,8 @@ const App = () => (
               </ProtectedRoute>
             }
           />
+          <Route path="/sessions/request/:tutor_id" element={<SessionRequest />} />
+          <Route path="/sessions/confirm/:id" element={<SessionConfirm />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
