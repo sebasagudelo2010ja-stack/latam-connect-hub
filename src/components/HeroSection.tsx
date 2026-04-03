@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import RetroGrid from "./RetroGrid";
 
@@ -51,18 +52,24 @@ const HeroSection = () => {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Button
+            asChild
             size="lg"
             className="w-full bg-azure text-azure-foreground shadow-lg shadow-azure/25 hover:bg-azure/90 sm:w-auto"
           >
-            Soy Estudiante
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <Link to="/accounts/register/client">
+              Soy Estudiante
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </Button>
           <Button
+            asChild
             size="lg"
             className="w-full bg-gold text-gold-foreground shadow-lg shadow-gold/25 hover:bg-gold/90 sm:w-auto"
           >
-            Soy Tutor
-            <ArrowRight className="ml-2 h-4 w-4" />
+            <Link to="/tutores/registro">
+              Soy Tutor
+              <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
           </Button>
         </motion.div>
       </motion.div>
