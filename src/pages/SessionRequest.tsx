@@ -118,10 +118,11 @@ const SessionRequest = () => {
         toast.success("¡Oferta enviada! El tutor revisará tu propuesta.", {
           description: "Te notificaremos cuando responda.",
         });
+        navigate(`/sessions/negotiate/${session.id}`);
       } else {
         toast.success("¡Solicitud enviada! El tutor confirmará tu sesión pronto.");
+        navigate("/accounts/dashboard/client");
       }
-      navigate("/accounts/dashboard/client");
     } catch {
       toast.error("Error al crear la solicitud.");
     } finally {
