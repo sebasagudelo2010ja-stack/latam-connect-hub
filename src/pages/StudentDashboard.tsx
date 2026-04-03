@@ -102,9 +102,11 @@ const StudentDashboard = () => {
                         <Search className="h-7 w-7 text-primary" />
                       </div>
                     </div>
-                    <Button className="bg-azure text-azure-foreground shadow-lg shadow-azure/20 hover:bg-azure/90">
-                      <Sparkles className="mr-2 h-4 w-4" />
-                      Buscar Tutor
+                    <Button asChild className="bg-azure text-azure-foreground shadow-lg shadow-azure/20 hover:bg-azure/90">
+                      <Link to="/tutors">
+                        <Sparkles className="mr-2 h-4 w-4" />
+                        Buscar Tutor
+                      </Link>
                     </Button>
                   </CardContent>
                 </Card>
