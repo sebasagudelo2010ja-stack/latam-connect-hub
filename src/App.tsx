@@ -9,6 +9,8 @@ import TutorRegister from "./pages/TutorRegister.tsx";
 import StudentDashboard from "./pages/StudentDashboard.tsx";
 import TutorDashboard from "./pages/TutorDashboard.tsx";
 import TutorsSearch from "./pages/TutorsSearch.tsx";
+import SessionRequest from "./pages/SessionRequest.tsx";
+import SessionConfirm from "./pages/SessionConfirm.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
@@ -41,6 +43,8 @@ const App = () => (
               </ProtectedRoute>
             }
           />
+          <Route path="/sessions/request/:tutor_id" element={<SessionRequest />} />
+          <Route path="/sessions/confirm/:id" element={<SessionConfirm />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
