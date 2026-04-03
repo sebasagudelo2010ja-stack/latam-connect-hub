@@ -8,6 +8,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { tutorSchema, type TutorFormData } from "@/lib/schemas";
 import { useAuthStore } from "@/stores/authStore";
+import { registerUser } from "@/lib/mockUserDb";
 import { SUBJECTS } from "@/lib/constants";
 
 import { Button } from "@/components/ui/button";
