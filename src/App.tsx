@@ -9,6 +9,10 @@ import TutorRegister from "./pages/TutorRegister.tsx";
 import StudentLogin from "./pages/StudentLogin.tsx";
 import TutorLogin from "./pages/TutorLogin.tsx";
 import StudentDashboard from "./pages/StudentDashboard.tsx";
+import StudentSearch from "./pages/StudentSearch.tsx";
+import StudentSessions from "./pages/StudentSessions.tsx";
+import StudentNotifications from "./pages/StudentNotifications.tsx";
+import StudentSettings from "./pages/StudentSettings.tsx";
 import TutorDashboard from "./pages/TutorDashboard.tsx";
 import TutorRequests from "./pages/TutorRequests.tsx";
 import TutorSessions from "./pages/TutorSessions.tsx";
@@ -42,6 +46,38 @@ const App = () => (
             element={
               <ProtectedRoute allowedRole="client">
                 <StudentDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/client/search"
+            element={
+              <ProtectedRoute allowedRole="client">
+                <StudentSearch />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/client/sessions"
+            element={
+              <ProtectedRoute allowedRole="client">
+                <StudentSessions />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/client/notifications"
+            element={
+              <ProtectedRoute allowedRole="client">
+                <StudentNotifications />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/client/settings"
+            element={
+              <ProtectedRoute allowedRole="client">
+                <StudentSettings />
               </ProtectedRoute>
             }
           />
