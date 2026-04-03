@@ -6,6 +6,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import Index from "./pages/Index.tsx";
 import StudentRegister from "./pages/StudentRegister.tsx";
 import TutorRegister from "./pages/TutorRegister.tsx";
+import StudentDashboard from "./pages/StudentDashboard.tsx";
+import TutorDashboard from "./pages/TutorDashboard.tsx";
+import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -20,6 +23,22 @@ const App = () => (
           <Route path="/" element={<Index />} />
           <Route path="/accounts/register/client" element={<StudentRegister />} />
           <Route path="/tutores/registro" element={<TutorRegister />} />
+          <Route
+            path="/accounts/dashboard/client"
+            element={
+              <ProtectedRoute allowedRole="client">
+                <StudentDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/tutor"
+            element={
+              <ProtectedRoute allowedRole="tutor">
+                <TutorDashboard />
+              </ProtectedRoute>
+            }
+          />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

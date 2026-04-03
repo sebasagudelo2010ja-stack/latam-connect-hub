@@ -3,9 +3,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { GraduationCap, ArrowLeft, BookOpen } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { studentSchema, type StudentFormData } from "@/lib/schemas";
+import { useAuthStore } from "@/stores/authStore";
 import { LATAM_COUNTRIES, COUNTRY_NAME_TO_CODE } from "@/lib/constants";
 import { useGeoLocation } from "@/hooks/useGeoLocation";
 
@@ -25,6 +26,8 @@ import {
 const StudentRegister = () => {
   const { country } = useGeoLocation();
   const detectedCode = country ? COUNTRY_NAME_TO_CODE[country] ?? "" : "";
+  const navigate = useNavigate();
+  const login = useAuthStore((s) => s.login);
 
   const {
     register,
@@ -55,7 +58,6 @@ const StudentRegister = () => {
   const isMinor = watch("is_minor");
 
   const onSubmit = async (data: StudentFormData) => {
-    // snake_case payload ready for Django
     const payload = {
       email: data.email,
       full_name: data.full_name,
@@ -67,7 +69,17 @@ const StudentRegister = () => {
       role: "student",
     };
     console.log("Student registration payload:", payload);
+    // Mock login
+    login("mock-token-student", {
+      id: crypto.randomUUID(),
+      email: data.email,
+      full_name: data.full_name,
+      country: data.country,
+      user_type: "client",
+      is_minor: data.is_minor,
+    });
     toast.success("¡Registro exitoso! Verifica tu email para activar tu cuenta.");
+    navigate("/accounts/dashboard/client");
   };
 
   return (

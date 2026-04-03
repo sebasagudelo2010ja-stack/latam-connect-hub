@@ -4,9 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { ArrowLeft, GraduationCap, AlertTriangle, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { tutorSchema, type TutorFormData } from "@/lib/schemas";
+import { useAuthStore } from "@/stores/authStore";
 import { SUBJECTS } from "@/lib/constants";
 
 import { Button } from "@/components/ui/button";
@@ -26,6 +27,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 
 const TutorRegister = () => {
   const [subjectsOpen, setSubjectsOpen] = useState(false);
+  const navigate = useNavigate();
+  const login = useAuthStore((s) => s.login);
 
   const {
     register,
@@ -72,7 +75,16 @@ const TutorRegister = () => {
       role: "tutor",
     };
     console.log("Tutor registration payload:", payload);
+    login("mock-token-tutor", {
+      id: crypto.randomUUID(),
+      email: data.email,
+      full_name: data.full_name,
+      user_type: "tutor",
+      subjects: data.subjects,
+      hourly_rate: parseFloat(data.hourly_rate),
+    });
     toast.success("¡Registro exitoso! Verifica tu email para activar tu cuenta.");
+    navigate("/accounts/dashboard/tutor");
   };
 
   return (
