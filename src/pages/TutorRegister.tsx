@@ -4,9 +4,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import { ArrowLeft, GraduationCap, AlertTriangle, X } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { tutorSchema, type TutorFormData } from "@/lib/schemas";
+import { useAuthStore } from "@/stores/authStore";
 import { SUBJECTS } from "@/lib/constants";
 
 import { Button } from "@/components/ui/button";
