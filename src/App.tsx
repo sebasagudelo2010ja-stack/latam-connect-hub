@@ -10,6 +10,10 @@ import StudentLogin from "./pages/StudentLogin.tsx";
 import TutorLogin from "./pages/TutorLogin.tsx";
 import StudentDashboard from "./pages/StudentDashboard.tsx";
 import TutorDashboard from "./pages/TutorDashboard.tsx";
+import TutorRequests from "./pages/TutorRequests.tsx";
+import TutorSessions from "./pages/TutorSessions.tsx";
+import TutorEarnings from "./pages/TutorEarnings.tsx";
+import TutorSettings from "./pages/TutorSettings.tsx";
 import TutorsSearch from "./pages/TutorsSearch.tsx";
 import SessionRequest from "./pages/SessionRequest.tsx";
 import SessionConfirm from "./pages/SessionConfirm.tsx";
@@ -46,6 +50,38 @@ const App = () => (
             element={
               <ProtectedRoute allowedRole="tutor">
                 <TutorDashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/tutor/requests"
+            element={
+              <ProtectedRoute allowedRole="tutor">
+                <TutorRequests />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/tutor/sessions"
+            element={
+              <ProtectedRoute allowedRole="tutor">
+                <TutorSessions />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/tutor/earnings"
+            element={
+              <ProtectedRoute allowedRole="tutor">
+                <TutorEarnings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/tutor/settings"
+            element={
+              <ProtectedRoute allowedRole="tutor">
+                <TutorSettings />
               </ProtectedRoute>
             }
           />
