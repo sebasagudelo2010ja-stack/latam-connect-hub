@@ -50,6 +50,38 @@ const App = () => (
             }
           />
           <Route
+            path="/accounts/dashboard/client/search"
+            element={
+              <ProtectedRoute allowedRole="client">
+                <StudentSearch />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/client/sessions"
+            element={
+              <ProtectedRoute allowedRole="client">
+                <StudentSessions />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/client/notifications"
+            element={
+              <ProtectedRoute allowedRole="client">
+                <StudentNotifications />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/client/settings"
+            element={
+              <ProtectedRoute allowedRole="client">
+                <StudentSettings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
             path="/accounts/dashboard/tutor"
             element={
               <ProtectedRoute allowedRole="tutor">
