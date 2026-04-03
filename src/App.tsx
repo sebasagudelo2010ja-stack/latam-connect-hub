@@ -53,6 +53,38 @@ const App = () => (
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/accounts/dashboard/tutor/requests"
+            element={
+              <ProtectedRoute allowedRole="tutor">
+                <TutorRequests />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/tutor/sessions"
+            element={
+              <ProtectedRoute allowedRole="tutor">
+                <TutorSessions />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/tutor/earnings"
+            element={
+              <ProtectedRoute allowedRole="tutor">
+                <TutorEarnings />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/accounts/dashboard/tutor/settings"
+            element={
+              <ProtectedRoute allowedRole="tutor">
+                <TutorSettings />
+              </ProtectedRoute>
+            }
+          />
           <Route path="/sessions/request/:tutor_id" element={<SessionRequest />} />
           <Route path="/sessions/confirm/:id" element={<SessionConfirm />} />
           <Route path="/sessions/negotiate/:id" element={<SessionNegotiate />} />
