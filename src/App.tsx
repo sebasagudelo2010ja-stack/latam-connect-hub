@@ -46,6 +46,7 @@ const App = () => (
           />
           <Route path="/sessions/request/:tutor_id" element={<SessionRequest />} />
           <Route path="/sessions/confirm/:id" element={<SessionConfirm />} />
+          <Route path="/sessions/negotiate/:id" element={<SessionNegotiate />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
