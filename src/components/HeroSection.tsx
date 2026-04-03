@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import RetroGrid from "./RetroGrid";
+import TubesHero from "./TubesHero";
 
 const container = {
   hidden: {},
@@ -20,7 +20,7 @@ const HeroSection = () => {
       className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16"
       aria-labelledby="hero-heading"
     >
-      <RetroGrid />
+      <TubesHero />
 
       <motion.div
         variants={container}
