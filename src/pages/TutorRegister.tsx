@@ -75,7 +75,16 @@ const TutorRegister = () => {
       role: "tutor",
     };
     console.log("Tutor registration payload:", payload);
+    login("mock-token-tutor", {
+      id: crypto.randomUUID(),
+      email: data.email,
+      full_name: data.full_name,
+      user_type: "tutor",
+      subjects: data.subjects,
+      hourly_rate: parseFloat(data.hourly_rate),
+    });
     toast.success("¡Registro exitoso! Verifica tu email para activar tu cuenta.");
+    navigate("/accounts/dashboard/tutor");
   };
 
   return (
