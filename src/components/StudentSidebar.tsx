@@ -59,7 +59,7 @@ export function StudentSidebar() {
         </SidebarGroup>
 
         {/* Navigation */}
-        <SidebarGroup defaultOpen>
+        <SidebarGroup>
           <SidebarGroupLabel>Menú</SidebarGroupLabel>
           <SidebarGroupContent>
             <SidebarMenu>
