@@ -52,6 +52,7 @@ const HeroSection = () => {
           className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row"
         >
           <Button
+            asChild
             size="lg"
             className="w-full bg-azure text-azure-foreground shadow-lg shadow-azure/25 hover:bg-azure/90 sm:w-auto"
           >
