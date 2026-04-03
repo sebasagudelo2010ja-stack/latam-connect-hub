@@ -8,6 +8,7 @@ import StudentRegister from "./pages/StudentRegister.tsx";
 import TutorRegister from "./pages/TutorRegister.tsx";
 import StudentDashboard from "./pages/StudentDashboard.tsx";
 import TutorDashboard from "./pages/TutorDashboard.tsx";
+import TutorsSearch from "./pages/TutorsSearch.tsx";
 import ProtectedRoute from "./components/ProtectedRoute.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
