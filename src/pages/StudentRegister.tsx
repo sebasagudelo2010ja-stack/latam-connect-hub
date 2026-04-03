@@ -6,6 +6,7 @@ import { GraduationCap, ArrowLeft, BookOpen } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 
 import { studentSchema, type StudentFormData } from "@/lib/schemas";
+import { useAuthStore } from "@/stores/authStore";
 import { LATAM_COUNTRIES, COUNTRY_NAME_TO_CODE } from "@/lib/constants";
 import { useGeoLocation } from "@/hooks/useGeoLocation";
 
