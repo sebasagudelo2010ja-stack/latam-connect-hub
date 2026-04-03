@@ -26,6 +26,8 @@ import {
 const StudentRegister = () => {
   const { country } = useGeoLocation();
   const detectedCode = country ? COUNTRY_NAME_TO_CODE[country] ?? "" : "";
+  const navigate = useNavigate();
+  const login = useAuthStore((s) => s.login);
 
   const {
     register,
