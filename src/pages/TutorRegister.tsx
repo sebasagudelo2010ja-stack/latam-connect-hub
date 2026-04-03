@@ -256,7 +256,7 @@ const TutorRegister = () => {
 
               <p className="text-center text-sm text-muted-foreground">
                 ¿Ya tienes cuenta?{" "}
-                <Link to="/" className="text-primary hover:underline">
+                <Link to="/accounts/login/tutor" className="text-secondary hover:underline">
                   Inicia sesión
                 </Link>
               </p>

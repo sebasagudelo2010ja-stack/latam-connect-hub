@@ -241,7 +241,7 @@ const StudentRegister = () => {
 
               <p className="text-center text-sm text-muted-foreground">
                 ¿Ya tienes cuenta?{" "}
-                <Link to="/" className="text-primary hover:underline">
+                <Link to="/accounts/login/client" className="text-primary hover:underline">
                   Inicia sesión
                 </Link>
               </p>
