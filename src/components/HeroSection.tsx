@@ -3,7 +3,6 @@ import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import TubesHero from "./TubesHero";
-import { useParticleTracer } from "@/hooks/useParticleTracer";
 
 const container = {
   hidden: {},
@@ -16,24 +15,13 @@ const item = {
 };
 
 const HeroSection = () => {
-  const particleCanvasRef = useParticleTracer();
-
   return (
     <section
       className="relative flex min-h-[90vh] items-center justify-center overflow-hidden pt-16"
       aria-labelledby="hero-heading"
     >
-      {/* Layer 1: Tubes background */}
       <TubesHero />
 
-      {/* Layer 2: Particle tracer (cursor-reactive) */}
-      <canvas
-        ref={particleCanvasRef}
-        className="absolute inset-0 z-[1] pointer-events-auto"
-        aria-hidden="true"
-      />
-
-      {/* Layer 3: Content */}
       <motion.div
         variants={container}
         initial="hidden"
