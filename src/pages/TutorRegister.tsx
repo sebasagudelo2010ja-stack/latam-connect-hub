@@ -27,6 +27,8 @@ import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover
 
 const TutorRegister = () => {
   const [subjectsOpen, setSubjectsOpen] = useState(false);
+  const navigate = useNavigate();
+  const login = useAuthStore((s) => s.login);
 
   const {
     register,
