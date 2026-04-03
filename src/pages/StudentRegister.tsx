@@ -59,27 +59,25 @@ const StudentRegister = () => {
   const isMinor = watch("is_minor");
 
   const onSubmit = async (data: StudentFormData) => {
-    const payload = {
-      email: data.email,
-      full_name: data.full_name,
-      password: data.password,
-      is_minor: data.is_minor,
-      guardian_name: data.is_minor ? data.guardian_name : null,
-      guardian_email: data.is_minor ? data.guardian_email : null,
-      country: data.country,
-      role: "student",
-    };
-    console.log("Student registration payload:", payload);
-    // Mock login
-    login("mock-token-student", {
+    const profile = {
       id: crypto.randomUUID(),
       email: data.email,
       full_name: data.full_name,
       country: data.country,
-      user_type: "client",
+      user_type: "client" as const,
       is_minor: data.is_minor,
-    });
-    toast.success("¡Registro exitoso! Verifica tu email para activar tu cuenta.");
+      guardian_name: data.is_minor ? data.guardian_name : undefined,
+      guardian_email: data.is_minor ? data.guardian_email : undefined,
+    };
+
+    const result = registerUser(data.email, data.password, profile);
+    if (!result.success) {
+      toast.error(result.error ?? "Error al registrar.");
+      return;
+    }
+
+    login("mock-token-student", profile);
+    toast.success("¡Registro exitoso! Ya puedes usar tu cuenta.");
     navigate("/accounts/dashboard/client");
   };
 
